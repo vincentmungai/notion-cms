@@ -1,0 +1,84 @@
+---
+import "../stylesheet/global.css";
+const allWorkCards = await Astro.glob('../content/hero-work-content/*.md');
+---
+
+<div class="hero_text_wrapper">
+    Life's Stories Told Effortlessly
+</div>
+<div class="hero-cta-wrapper">
+    <div class="primary-cta-button">
+        <span>Contact</span>
+    </div>
+</div>
+<div class="work-card-wrapper">
+    {allWorkCards.map(workCard => (
+            <div class="work-card">
+                <!-- Assuming workCard has properties for image and alt text -->
+                <img src={workCard.frontmatter.image} alt={workCard.frontmatter.alt}>
+
+                <div class="card-description">
+                    {workCard.frontmatter.title}
+                </div>
+            </div>
+    ))}
+
+
+</div>
+
+<style>
+    .hero_text_wrapper {
+        font-size: var(--h3);
+        color: var(--white);
+    }
+
+    .hero-cta-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        height: fit-content !important;
+    }
+
+    .primary-cta-button {
+        font-size: var(--normal);
+        background-color: var(--white);
+        color: var(--black);
+        width: fit-content !important;
+        height: fit-content !important;
+        padding: 10px 30px;
+        border-radius: var(--border_radius);
+        border: 1px solid var(--white);
+    }
+
+    .work-card-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 60px;
+    }
+
+    .work-card {
+        background-color: var(--light_gray);
+        flex: 1;
+        max-width: 500px;
+        height: 650px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        cursor: pointer;
+    }
+
+    .card-description {
+        background-color: var(--orange);
+        position: absolute;
+        margin-bottom: 60px;
+        padding: 10px;
+
+    }
+
+    .work-card img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+</style>
