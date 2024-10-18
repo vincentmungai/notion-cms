@@ -10,6 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.15.1"
+    "@notionhq/client": "^2.2.15",
+    "astro": "^4.15.1",
+    "astro-sanity": "^1.1.7"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.34.3"
   }
 }

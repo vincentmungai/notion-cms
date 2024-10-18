@@ -3,8 +3,12 @@
 import NavBar from "../components/NavBar.astro";
 import HeroWork from "../layouts/HeroWork.astro";
 import "../stylesheet/global.css";
+import HeroPrice from "../layouts/HeroPrice.astro";
 
+import { getFirstBlogPost } from "../../lib/api";
 
+const posts = await getFirstBlogPost();
+const heroTitle = posts[0].title;
 ---
 <!doctype html>
 <html lang="en">
@@ -16,10 +20,13 @@ import "../stylesheet/global.css";
     <title>Hunter | Home</title>
 </head>
 <body>
-
+<h1 style="color: #fff ">{heroTitle}</h1>
 <NavBar/>
 <section>
     <HeroWork />
+</section>
+<section>
+    <HeroPrice/>
 </section>
 </body>
 </html>
